@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SavrX - Play2Earn</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>SavrX — Play2Earn</h1>
+      <p>12-member SavrX group. Choose a tier, earn weekly interest, simulate progress and withdraw.</p>
+    </header>
+
+    <main>
+      <section class="card" id="registration">
+        <h2>Student Registration</h2>
+        <form id="regForm">
+          <label>
+            Name
+            <input type="text" id="name" placeholder="Full name" required />
+          </label>
+
+          <label>
+            Tier
+            <select id="tier" required>
+              <option value="">-- select tier --</option>
+              <option value="tier1">Tier 1 — ₦10,000 (5% / week)</option>
+              <option value="tier2">Tier 2 — ₦20,000 (10% / week)</option>
+              <option value="tier3">Tier 3 — ₦30,000 (20% / week)</option>
+            </select>
+          </label>
+
+          <label>
+            Amount (Naira)
+            <input type="number" id="amount" placeholder="Enter amount" required />
+          </label>
+
+          <div class="row">
+            <button type="submit" id="joinBtn">Join Group</button>
+            <button type="button" id="clearBtn">Clear</button>
+          </div>
+
+          <p class="note">Note: Amount must match the chosen tier. Max group size: <strong id="maxMembers">12</strong>.</p>
+          <p id="regMsg" class="message"></p>
+        </form>
+      </section>
+
+      <section class="card" id="dashboard">
+        <h2>Savings Dashboard</h2>
+        <div class="controls">
+          <button id="simulateWeek">Simulate Week</button>
+        </div>
+
+        <div id="totals" class="totals">
+          <div><strong>Total Principal:</strong> <span id="totalPrincipal">₦0</span></div>
+          <div><strong>Total Accumulated Interest:</strong> <span id="totalInterest">₦0</span></div>
+          <div><strong>Overall Total:</strong> <span id="overallTotal">₦0</span></div>
+          <div><strong>Members:</strong> <span id="memberCount">0</span>/12</div>
+        </div>
+
+        <table id="membersTable">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Tier</th>
+              <th>Principal</th>
+              <th>Weekly Interest</th>
+              <th>Accumulated Interest</th>
+              <th>Weeks</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </section>
+    </main>
+
+    <footer>
+      <small>Built for SavrX assessment — dynamic in-browser simulation (no backend).</small>
+    </footer>
+  </div>
+
+  <!-- Replace modal -->
+  <div id="replaceModal" class="modal hidden" role="dialog" aria-hidden="true">
+    <div class="modal-content">
+      <h3>Replace Student</h3>
+      <form id="replaceForm">
+        <input type="hidden" id="replaceId" />
+        <label>
+          New Student Name
+          <input type="text" id="replaceName" placeholder="Full name" required />
+        </label>
+        <label>
+          Tier
+          <select id="replaceTier" required>
+            <option value="">-- select tier --</option>
+            <option value="tier1">Tier 1 — ₦10,000 (5% / week)</option>
+            <option value="tier2">Tier 2 — ₦20,000 (10% / week)</option>
+            <option value="tier3">Tier 3 — ₦30,000 (20% / week)</option>
+          </select>
+        </label>
+        <label>
+          Amount (Naira)
+          <input type="number" id="replaceAmount" placeholder="Enter amount" required />
+        </label>
+        <div class="row">
+          <button type="submit" id="confirmReplace">Replace</button>
+          <button type="button" id="cancelReplace">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
